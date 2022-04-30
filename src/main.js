@@ -1,18 +1,6 @@
 const Client = require("./Handlers/Client.js")
 require('dotenv').config()
 
-// =========================================== //
-
-var http = require('http');
-var fs = require('fs');
-
-http.createServer(function(req, res) {
-  res.writeHead(200,{'content-type':'image/gif'});
-  fs.createReadStream('load.gif').pipe(res);
-}).listen(8080);
-
-// =========================================== //
-
 const client = new Client({
   fetchAllMembers: false,
   failIfNotExists: false,
