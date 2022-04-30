@@ -1,4 +1,7 @@
 const Client = require("./Handlers/Client.js")
+
+const fs = require('fs')
+
 require('dotenv').config()
 
 const client = new Client({

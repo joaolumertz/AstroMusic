@@ -69,11 +69,10 @@ module.exports = class extends Command {
     .setTitle('Status dos Nodes do Lavalink')
     .setDescription(`Versão do **[Lavalink](https://github.com/davidffa/lavalink/releases)** que uso.\nWrapper do Lavalink: **[Vulkava](https://npmjs.com/package/vulkava)**.`)
     .addFields([
-      { name: ":id: Nome", value: `\`${node.identifier}\``, inline: true },
+      { name: "<:id:970049925905788948> Nome", value: `\`${node.identifier}\``, inline: true },
       { name: "🎶 Tocando", value: `\`${node.stats.players}\``, inline: true },
       { name: "⏱ Uptime", value: `\`${this.client.util.msToDate(node.stats.uptime)}\``, inline: true },
-      { name: "🖥 CPU", value: `Cores: \`${node.stats.cpu.cores}\`\nLavalink: \`${~~(node.stats.cpu.lavalinkLoad * 100)}%\`\nSistema: \`${~~(node.stats.cpu.systemLoad * 100)}%\``, inline: true },
-      { name: "💾 RAM", value: `\`${(node.stats.memory.used / 1024 / 1024).toFixed(2)}MB\``, inline: true },
+      { name: "🖥 CPU", value: `<:cpu:970051876009672734> Cores: \`${node.stats.cpu.cores}\`\n<:ram:970052731832238150> RAM: \`${(node.stats.memory.used / 1024 / 1024).toFixed(2)}MB\`\nLavalink: \`${~~(node.stats.cpu.lavalinkLoad * 100)}%\`\n<:sistema:970051302639927396> Sistema: \`${~~(node.stats.cpu.systemLoad * 100)}%\``, inline: true },
       { name: "🔔 Ping", value: `\`${lavalinkPing}ms\``, inline: true },
       { name: "♻ Versões", value: `Lavaplayer: \`${versions?.LAVAPLAYER}\`\nBuild: \`${versions?.BUILD}\`\nBuild em: <t:${Math.floor(versions?.BUILDTIME / 1000)}:d>`, inline: true },
       { name: "\u200B", value: `<:spring:968601050909147196> \`${versions?.SPRING}\`\n<:kotlin:968601655543205949> \`${versions?.KOTLIN}\`\n<:java:968601048455475241> \`${versions?.JVM}\``, inline: true },
