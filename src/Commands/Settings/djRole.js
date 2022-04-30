@@ -10,8 +10,19 @@ module.exports = class extends Command {
       options: [
         {
           name: "cargo",
-          description: "Selecione o cargo.",
+          description: "Informe o cargo",
           type: "ROLE",
+        },
+        {
+          name: "opcao",
+          description: "Selecione a opção para remover",
+          type: "STRING",
+          choices: [
+            {
+              name: "Remover",
+              value: "remove"
+            }
+          ]
         }
       ]
     })
@@ -22,12 +33,33 @@ module.exports = class extends Command {
     const role = options.getRole('cargo')
 
     const data = await this.client.guildCache.get(interaction.guild.id)
+    
+    switch(options.getString('opcao')) {
+      case 'remove' : {
+        const dbData = await this.client.db.guilds.findOne({ _idG: interaction.guild.id })
+        if(!data?.djRole || !dbData.settings.djRole) {
+          await interaction.reply({ content: "Nenhum cargo de DJ setado use \`/djrole\` para setar um cargo de DJ.", ephemeral: true })
+          return;
+        } else {
+
+          await interaction.reply({ content: "Cargo de DJ Removido" })
+
+          if(data || dbData) {
+            data.djRole = ''
+            await this.client.db.guilds.findOneAndUpdate({ _idG: interaction.guild.id }, { $set: { 'settings.djRole': '' }})
+          } else {
+            await this.client.db.guilds.create({ _idG: interaction.guild.id, settings: { djRole: '' }})
+          }
+          return
+        }    
+      } 
+    }
+    
     if(!role) {
       if(!data?.djRole) {
         interaction.reply({ content: "Nenhum cargo de DJ setado use \`/djrole\` para setar um cargo de DJ.", ephemeral: true })
         return;
       }
-
 
       const djRole = interaction.guild.roles.cache.get(data.djRole);
 
@@ -36,8 +68,7 @@ module.exports = class extends Command {
         const dbData = await this.client.db.guilds.findOne({ _idG: interaction.guild.id })
 
         if(dbData) {
-          dbData.settings.djRole = '';
-          dbData.save();
+          await this.client.db.guilds.findOneAndUpdate({ _idG: interaction.guild.id }, { $set: { 'settings.djRole': '' }})
           interaction.reply({ content: "Nenhum cargo de DJ setado use \`/djrole\` para setar um cargo de DJ.", ephemeral: true })          
         }
         return;
