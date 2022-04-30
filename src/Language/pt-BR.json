@@ -1,0 +1,11 @@
+{
+  "music": {
+    "common": {
+      "notplaying": "Não estou tocando músicas neste servidor",
+      "notvchannel": "Você precisa estar em um canal de voz para usar este comando.",
+      "notvchannelwithbot": "Você precisa estar no mesmo canal de voz que o bot.",
+      "notdj": "Apenas alguém com o cargo de DJ podem usar este comando.",
+      "notdjoreq": "Apenas quem requisitou a música ou alguém com o cargo de DJ podem usar este comando."
+    }
+  }
+}

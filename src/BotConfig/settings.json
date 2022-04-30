@@ -1,0 +1,6 @@
+{
+  "leaveOnEmpty_Channel": {
+    "enabled": true,
+    "time_delay": 60000
+  }
+}
