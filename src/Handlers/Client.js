@@ -104,12 +104,7 @@ module.exports = class extends Client {
       const guildData = guildsDB.find(g => g._idG === guild.id);
 
       this.guildCache.set(guild.id, {
-        disabledCmds: guildData?.disabledCmds ?? [],
-        autoRole: guildData?.roleID ?? '',
-        welcomeChatID: guildData?.welcomeChatID ?? '',
-        memberRemoveChatID: guildData?.memberRemoveChatID ?? '',
         djRole: guildData?.settings.djRole ?? '',
-        didUMean: guildData?.didumean ?? true
       });
     });
   }
