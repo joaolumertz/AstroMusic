@@ -109,7 +109,7 @@ module.exports = class extends Client {
 
       let randStatus = status[Math.floor(Math.random() * status.length)]
 
-      this.setPresence({
+      this.user.setPresence({
         status: 'idle',
         game: {
           name: randStatus,
