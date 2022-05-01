@@ -73,7 +73,7 @@ module.exports = class extends Client {
       {
         id: "Europe Node",
         hostname: process.env.EUNODEHOST,
-        port: 2333,
+        port: 80,
         password: process.env.EUNODEPASSWORD,
         maxRetryAttempts: 5,
         retryAttemptsInterval: 6000,
@@ -84,7 +84,7 @@ module.exports = class extends Client {
       {
         id: "USA Node",
         hostname: process.env.USANODEHOST,
-        port: 2333,
+        port: 80,
         password: process.env.USANODEPASSWORD,
         maxRetryAttempts: 5,
         retryAttemptsInterval: 6000,
