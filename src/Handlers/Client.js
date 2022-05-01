@@ -15,6 +15,7 @@ module.exports = class extends Client {
     this.commands = []
     this.loadCommands()
     this.loadEvents()
+    this.statusClient()
     this.connectLavaLink()
     this.guildCache = new Map()
     this.util = Util
@@ -23,6 +24,34 @@ module.exports = class extends Client {
 
   registreCommands() {
     this.application?.commands.set(this.commands)
+  }
+
+  statusClient() {
+    let status = [
+      { name: `${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(this.guilds.cache.size)} servidor(es)`, type: 'WATCHING'},
+      { name: `com ${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(this.users.cache.size)} usiario(s)`, type: 'PLAYING' },
+      { name: `${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(await this.vulkava.players.size)} músicas`, type: 'LISTENING' },
+      { name: `há ${this.util.msToDate(process.uptime() * 1e3)}`, type: 'STREAMING' },
+    ]
+
+    let currentPresence = 0;
+
+    let presence = status[currentPresence]
+
+    if(typeof presence === 'function') {
+      presence = presence(this)
+    }
+
+    this.user.setPresence({
+      activities: presence,
+      status: 'online'
+    })
+
+    currentPresence++
+    if(currentPresence >= status.length) {
+      currentPresence = 0
+    }
+
   }
 
   loadCommands(path = 'src/Commands') {
