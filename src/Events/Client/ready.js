@@ -50,14 +50,16 @@ module.exports = class extends Event {
     console.log(colorful(roxo, `―――――――――――――――――― Bot ――――――――――――――――――`))
     console.log(c.blue(`${mosaic}`))
 
-    setInterval(async () => {
-      await this.client.statusClient()
-    }, 20 * 1000)
-
+    
     await this.client.connectLavaLink()
     await this.client.connectToDatabase()
     await this.client.registreCommands()
     await this.client.loadBotCache()
+
+    setInterval(async () => {
+      await this.client.statusClient()
+    }, 20 * 1000)
+    
     this.client.vulkava.start(this.client.user.id)
   }
 }
