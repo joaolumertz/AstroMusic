@@ -51,7 +51,7 @@ console.log(colorful(roxo, `―――――――――――――――――�
 console.log(c.blue(`${mosaic}`))
     
     
-    await this.loadClientStatus()
+    await this.client.loadClientStatus()
     await this.client.connectLavaLink()
     await this.client.connectToDatabase()
     await this.client.registreCommands()
