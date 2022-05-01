@@ -19,7 +19,7 @@ module.exports = class extends Event {
 
       const user = await this.client.db.users.findOne({ _idU: interaction.user.id })
       
-      const guildDb = await this.client.db.guilds.findOne({ _idG: interaction.guild.id })
+      const guildDb = await this.client.db.guilds.findOne({ _idG: interaction.guildId })
 
       
       if(cmd) {
@@ -29,7 +29,7 @@ module.exports = class extends Event {
         }
         
         if(!guildDb) {
-          await this.client.db.users.create({ _idG: interaction.guild.id })
+          await this.client.db.guilds.create({ _idG: interaction.guildId })
           return interaction.reply({ content: "Opa, parece que este servidor não está registrado no meu banco de dados.\nAcabei de registrar com sucesso!", ephemeral: true })
         }
         

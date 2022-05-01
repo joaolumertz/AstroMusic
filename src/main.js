@@ -36,8 +36,8 @@ for(const lang of langs.filter(file => file.endsWith(".json"))){
 }
 Object.freeze(client.la)
 
-process.on('unhandledRejection', (reason, p) => {
-  console.log('Erro! -' + reason)
-});
+// process.on('unhandledRejection', (reason, p) => {
+//   console.log('Erro! -' + reason)
+// });
 
 client.login(process.env.TOKEN)
