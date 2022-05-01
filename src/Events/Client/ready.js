@@ -36,22 +36,40 @@ module.exports = class extends Event {
   run = async () => {
 
     console.log(colorful(roxo, `―――――――――――――――――― Bot ――――――――――――――――――`))
-console.log(colorful(ciano, `[LOGS] Estou em ${this.client.guilds.cache.size} servidores.
-[LOGS] Cuidando de ${this.client.users.cache.size} membros.
-[LOGS] Administrando ${this.client.channels.cache.size} canais.`))
-console.log(colorful(roxo, `―――――――――――――――――― Bot ――――――――――――――――――`))
-console.log(colorful(ciano, `                ɪɴғᴏʀᴍᴀᴄ̧ᴏ̃ᴇs`))
-console.log(colorful(roxo, `―――――――――――――――――― Bot ――――――――――――――――――`))//daorinha
+    console.log(colorful(ciano, `[LOGS] Estou em ${this.client.guilds.cache.size} servidores.
+    [LOGS] Cuidando de ${this.client.users.cache.size} membros.
+    [LOGS] Administrando ${this.client.channels.cache.size} canais.`))
+    console.log(colorful(roxo, `―――――――――――――――――― Bot ――――――――――――――――――`))
+    console.log(colorful(ciano, `                ɪɴғᴏʀᴍᴀᴄ̧ᴏ̃ᴇs`))
+    console.log(colorful(roxo, `―――――――――――――――――― Bot ――――――――――――――――――`))//daorinha
 
-console.log(colorful(ciano, `[LOGS] ${this.client.user.tag}
-[LOGS] ${this.client.user.id}
-[LOGS] ${this.client.user.username}
-[LOGS] ${this.client.user.presence.status}`))
-console.log(colorful(roxo, `―――――――――――――――――― Bot ――――――――――――――――――`))
-console.log(c.blue(`${mosaic}`))
+    console.log(colorful(ciano, `[LOGS] ${this.client.user.tag}
+    [LOGS] ${this.client.user.id}
+    [LOGS] ${this.client.user.username}
+    [LOGS] ${this.client.user.presence.status}`))
+    console.log(colorful(roxo, `―――――――――――――――――― Bot ――――――――――――――――――`))
+    console.log(c.blue(`${mosaic}`))
     
-    
-    await this.client.loadClientStatus()
+    let status = [
+      `Estou em ${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(this.client.guilds.cache.size)} servidor(es)`,
+      `Escutando música com ${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(this.client.users.cache.size)} usiario(s)`,
+      `Tocando ${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(this.client.vulkava.nodes.players)} música(s)`,
+    ]
+
+    setInterval(() => {
+
+      let randStatus = status[Math.floor(Math.random() * status.length)]
+
+      this.client.user.setPresence({
+        status: 'idle',
+        game: {
+          name: randStatus,
+          type: 'WATCHING'
+        }
+      })
+
+    }, 20 * 1000)
+
     await this.client.connectLavaLink()
     await this.client.connectToDatabase()
     await this.client.registreCommands()

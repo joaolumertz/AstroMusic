@@ -16,7 +16,6 @@ module.exports = class extends Client {
     this.loadCommands()
     this.loadEvents()
     this.connectLavaLink()
-    this.loadClientStatus()
     this.guildCache = new Map()
     this.util = Util
     this.request = request
@@ -96,28 +95,6 @@ module.exports = class extends Client {
     ]
 
     this.vulkava = new NewBot(this, nodes)
-  }
-
-  loadClientStatus() {
-    let status = [
-      `Estou em ${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(this.guilds.cache.size)} servidor(es)`,
-      `Escutando música com ${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(this.users.cache.size)} usiario(s)`,
-      `Tocando ${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(this.vulkava.nodes.players)} música(s)`,
-    ]
-
-    setInterval(() => {
-
-      let randStatus = status[Math.floor(Math.random() * status.length)]
-
-      this.user.setPresence({
-        status: 'idle',
-        game: {
-          name: randStatus,
-          type: 'WATCHING'
-        }
-      })
-
-    }, 20 * 1000)
   }
 
   async loadBotCache() {
