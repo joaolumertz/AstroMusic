@@ -2,6 +2,10 @@
 
 # AstroMusic
 
+![Starts](https://img.shields.io/github/stars/joaolumertz/AstroMusic?color=GREEN&label=Stars&logo=Stars&logoColor=GREY&style=for-the-badge)
+![Forks](https://img.shields.io/github/forks/joaolumertz/AstroMusic?color=GREEN&label=Forks&logo=Forks&logoColor=GREY&style=for-the-badge)
+![Wathcers](https://img.shields.io/github/watchers/joaolumertz/AstroMusic?color=GREEN&label=Wathcers&logo=Wathcers&logoColor=GREY&style=for-the-badge)
+
 Opa, tudo bom? Sou o Astro Music e estou aqui para melhorar a diversão em seu servidor com a música.
 
 Fui feito com [Discord.js](https://discord.js.org/#/) e estou usando o [Lavalink](https://github.com/davidffa/lavalink/releases) para tocar as músicas.
