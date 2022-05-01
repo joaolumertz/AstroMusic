@@ -69,23 +69,46 @@ module.exports = class extends Client {
   }
 
   async connectLavaLink() {
+    const portNodes = Number(process.env.PORT) || 80
     const nodes  = [
       {
-        id: "Europe Node",
-        hostname: process.env.EUNODEHOST,
-        port: 80,
-        password: process.env.EUNODEPASSWORD,
+        id: "Saturno",
+        hostname: process.env.SATURNOHOST,
+        port: portNodes,
+        password: process.env.PASSWORDLAVALINK,
         maxRetryAttempts: 5,
         retryAttemptsInterval: 6000,
         secure: false,
-        region: 'EU',
+        region: 'USA',
         resumeKey: 'AstroBot'
       },
       {
-        id: "USA Node",
-        hostname: process.env.USANODEHOST,
+        id: "Júpiter",
+        hostname: process.env.JUPITERHOST,
         port: 80,
-        password: process.env.USANODEPASSWORD,
+        password: process.env.PASSWORDLAVALINK,
+        maxRetryAttempts: 5,
+        retryAttemptsInterval: 6000,
+        secure: false,
+        region: 'USA',
+        resumeKey: 'AstroBot'
+      },
+      {
+        id: "Netuno",
+        hostname: process.env.NETUNOHOST,
+        port: 80,
+        password: process.env.PASSWORDLAVALINK,
+        maxRetryAttempts: 5,
+        retryAttemptsInterval: 6000,
+        secure: false,
+        region: 'USA',
+        resumeKey: 'AstroBot'
+      },
+      {
+        id: "Plutão",
+        hostname: process.env.PLUTAOHOST,
+        port: 80,
+        password: process.env.PASSWORDLAVALINK,
         maxRetryAttempts: 5,
         retryAttemptsInterval: 6000,
         secure: false,

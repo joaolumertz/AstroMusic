@@ -11,8 +11,10 @@ module.exports = class extends Command {
   run = async (interaction) => {
 
     const nodes = [
-      this.client.vulkava.nodes.find(n => n.identifier === "USA Node"),
-      this.client.vulkava.nodes.find(n => n.identifier === "Europe Node")
+      this.client.vulkava.nodes.find(n => n.identifier === "Saturno"),
+      this.client.vulkava.nodes.find(n => n.identifier === "Júpiter"),
+      this.client.vulkava.nodes.find(n => n.identifier === "Netuno"),
+      this.client.vulkava.nodes.find(n => n.identifier === "Plutão")
     ]
 
     const row = new MessageActionRow()
@@ -41,16 +43,18 @@ module.exports = class extends Command {
       switch(i.customId) {
         case 'left' : 
           if(page === 1) return;
+          if(page === 2) {
+            row.components[0].disabled = true;
+          }
           page--;
-          row.components[0].disabled = true;
           row.components[1].disabled = false;
           break;
 
         case 'right' :
-          if(page == 2) return
+          if(page == 4) return;
+          if(page === 3) row.components[1].disabled = true;
           page++;
           row.components[0].disabled = false;
-          row.components[1].disabled = true;
           break;
       }
 
