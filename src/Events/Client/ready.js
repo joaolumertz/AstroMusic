@@ -50,7 +50,7 @@ module.exports = class extends Event {
     console.log(colorful(roxo, `―――――――――――――――――― Bot ――――――――――――――――――`))
     console.log(c.blue(`${mosaic}`))
 
-    setInterval(() => {
+    setInterval(async () => {
 
       let status = [
         `Estou em ${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(this.client.guilds.cache.size)} servidor(es)`,
