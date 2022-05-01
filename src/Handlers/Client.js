@@ -100,8 +100,8 @@ module.exports = class extends Client {
 
   loadClientStatus() {
     let status = [
-      `Estou em ${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(this.client.guilds.cahce.size)} servidor(es)`,
-      `Escutando música com ${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(this.client.users.cahce.size)} usiario(s)`,
+      `Estou em ${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(this.guilds.cahce.size)} servidor(es)`,
+      `Escutando música com ${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(this.users.cahce.size)} usiario(s)`,
       `Tocando ${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(this.vulkava.nodes.players)} música(s)`,
     ]
 
