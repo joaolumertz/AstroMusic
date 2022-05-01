@@ -4,7 +4,15 @@ module.exports = class extends Command {
   constructor(client) {
     super(client, {
       name: "remove",
-      description: "〔🎶 • Música〕Remova uma música da fila..."
+      description: "〔🎶 • Música〕Remova uma música da fila...",
+      options: [
+        {
+          name: 'musica',
+          description: 'Informe o número da música a ser removida.',
+          type: 'NUMBER',
+          required: true
+        }
+      ]
     })
   }
   run = async (interaction, ls) => {
@@ -17,6 +25,8 @@ module.exports = class extends Command {
     if(!voiceChannel) return interaction.reply({ content: this.client.la[ls].music.common.notvchannel, ephemeral: true })
   
     if(voiceChannel.id !== player.voiceChannelId) return interaction.reply({ content: this.client.la[ls].music.common.notvchannelwithbot, ephemeral: true })
+
+    const musica = interaction.options.getNumber('musica')
 
     const remove = async (pos) => {
       if(!player.queue.length) {
