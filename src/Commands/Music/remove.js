@@ -29,7 +29,7 @@ module.exports = class extends Command {
       }
 
       player.queue.splice(pos - 1, 1);
-      interaction.reply()
+      interaction.reply({ content: `A música de número ${pos} da fila foi removida.`})
     }
 
     const isDJ = await this.client.vulkava.hasDJRole(interaction.member)
