@@ -67,24 +67,14 @@ module.exports = class NewBot extends Vulkava {
       .setTitle("🎶 Tocando Agora")
       
       if(!player.radio) {
-        // embed.addFields([
-        //   { name: "Título", value: `\`${track.title}\``, inline: true },
-        //   { name: "Pedido de", value: `${requester.toString()}`, inline: true },
-        //   { name: "Duração", value: `\`${this.client.util.format(track.duration)}\``, inline: false }
-        // ])
-        // .setThumbnail(track.thumbnail)
-        // .setURL(track.uri)
-        // player.lastPlayingMsgID = await channel.send({ embeds: [embed ]}).then(m => m.id)
-      
-        player.lastPlayingMsgID = await channel.send(`🎶 Tocando Agora...\n\`${track.title}\`\n**Pedido por** \`${requester.tag}\`.`).then(m => m.id)
-      
+         player.lastPlayingMsgID = await channel.send(`🎶 Tocando Agora...\n\`${track.title}\`\n**Pedido por** \`${requester.tag}\`.`).then(m => m.id)
       }
     });
     
     this.on('queueEnd', async (player) => {
       const channel = client.channels.cache.get(player.textChannelId);
     
-      channel.send(`Queue ended!`);
+      channel.send(`Todas as músicas da fila acabaram...\n***Saindo...***`);
     
       player.destroy();
     })
