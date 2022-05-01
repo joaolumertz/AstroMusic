@@ -69,12 +69,11 @@ module.exports = class extends Client {
   }
 
   async connectLavaLink() {
-    const portNodes = Number(process.env.PORT) || 80
     const nodes  = [
       {
         id: "Saturno",
         hostname: process.env.SATURNOHOST,
-        port: portNodes,
+        port: 80,
         password: process.env.PASSWORDLAVALINK,
         maxRetryAttempts: 5,
         retryAttemptsInterval: 6000,
