@@ -136,7 +136,7 @@ module.exports = class extends Client {
     let status = [
       { name: `${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(this.guilds.cache.size)} servidor(es)`, type: 'WATCHING'},
       { name: `com ${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(this.users.cache.size)} usiario(s)`, type: 'PLAYING' },
-      { name: `há ${this.util.msToDate(process.uptime() * 1e3)}`, type: 'STREAMING' },
+      { name: `há ${Util.msToDate(process.uptime() * 1e3)}`, type: 'STREAMING' },
     ]
 
     let currentPresence = 0;
