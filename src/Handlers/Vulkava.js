@@ -62,10 +62,12 @@ module.exports = class NewBot extends Vulkava {
 
       const requester = player.current?.requester
 
+      const guild = await this.client.guilds.cache.get(player.guildId)
+
       const embed = new MessageEmbed()
       .setColor("PURPLE")
       .setTitle("🎶 Tocando Agora")
-      .setAuthor({ name: `${player.guild.name}`, iconURL: player.guild.iconURL({ dynamic: true }) || `https://www.designtagebuch.de/wp-content/uploads/mediathek//2021/05/discord-logo.jpg` })
+      .setAuthor({ name: `${guild.name}`, iconURL: guild.iconURL({ dynamic: true }) || `https://www.designtagebuch.de/wp-content/uploads/mediathek//2021/05/discord-logo.jpg` })
       .addFields(
         [
           { name: "Música", value: track.title, inline: false },
