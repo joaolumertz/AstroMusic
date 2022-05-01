@@ -16,6 +16,7 @@ module.exports = class extends Client {
     this.loadCommands()
     this.loadEvents()
     this.connectLavaLink()
+    this.loadClientStatus()
     this.guildCache = new Map()
     this.util = Util
     this.request = request
@@ -103,6 +104,20 @@ module.exports = class extends Client {
       `Escutando música com ${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(this.client.users.cahce.size)} usiario(s)`,
       `Tocando ${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(this.client.vulkava.nodes.players)} música(s)`,
     ]
+
+    setInterval(() => {
+
+      let randStatus = status[Math.floor(Math.random() * status.length)]
+
+      this.setPresence({
+        status: 'idle',
+        game: {
+          name: randStatus,
+          type: 'WATCHING'
+        }
+      })
+
+    }, 20 * 1000)
   }
 
   async loadBotCache() {

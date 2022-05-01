@@ -50,7 +50,8 @@ console.log(colorful(ciano, `[LOGS] ${this.client.user.tag}
 console.log(colorful(roxo, `―――――――――――――――――― Bot ――――――――――――――――――`))
 console.log(c.blue(`${mosaic}`))
     
-    this.client.user.setPresence({ activities: [{ name: "Teste new project", type: "PLAYING"}]})
+    
+    await this.loadClientStatus()
     await this.client.connectLavaLink()
     await this.client.connectToDatabase()
     await this.client.registreCommands()
