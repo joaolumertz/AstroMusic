@@ -63,18 +63,26 @@ module.exports = class NewBot extends Vulkava {
       const requester = player.current?.requester
 
       const embed = new MessageEmbed()
-      .setColor("RANDOM")
+      .setColor("PURPLE")
       .setTitle("🎶 Tocando Agora")
+      .setAuthor({ name: `${interaction.guild.name}`, iconURL: interaction.guild.iconURL({ dynamic: true }) || `https://www.designtagebuch.de/wp-content/uploads/mediathek//2021/05/discord-logo.jpg` })
+      .addFields(
+        [
+          { name: "Música", value: track?.title, inline: false },
+          { name: "Solicitado por", value: track?.requester.tag, inline: false },
+          { name: "Duração", value: this.client.util.format(track?.duration), inline: false },
+        ]
+      )
       
       if(!player.radio) {
-         player.lastPlayingMsgID = await channel.send(`🎶 Tocando Agora...\n\`${track.title}\`\n**Pedido por** \`${requester.tag}\`.`).then(m => m.id)
+         player.lastPlayingMsgID = await channel.send({ embeds: [embed] }).then(m => m.id)
       }
     });
     
     this.on('queueEnd', async (player) => {
       const channel = client.channels.cache.get(player.textChannelId);
     
-      channel.send(`Todas as músicas da fila acabaram...\n***Saindo...***`);
+      channel.send(`A lista de músicas acabou...\nUse **\`/play\`** e adicione mais músicas...`);
     
       player.destroy();
     })
@@ -106,29 +114,5 @@ module.exports = class NewBot extends Vulkava {
       }
     }
     return false;
-  }
-
-  async getRadioNowPlaying(radio) {
-    let artist, songTitle;
-    const xmlParser = new Parser();
-
-    if (['CidadeHipHop', 'CidadeFM', 'RadioComercial', 'M80'].includes(radio)) {
-      const xml = await this.client.request(`https://${radio === 'M80' ? 'm80' : radio === 'RadioComercial' ? 'radiocomercial' : 'cidade'}.iol.pt/nowplaying${radio === 'CidadeHipHop' ? '_Cidade_HipHop' : ''}.xml`).then(r => r.body.text());
-
-      const text = await xmlParser.parseStringPromise(xml).then(t => t.RadioInfo.Table[0]);
-
-      artist = text['DB_DALET_ARTIST_NAME'][0];
-      songTitle = text['DB_DALET_TITLE_NAME'][0];
-    } else if (radio === 'RFM') {
-      const xml = await this.client.request('https://configsa01.blob.core.windows.net/rfm/rfmOnAir.xml')
-        .then(async r => Buffer.from(await r.body.arrayBuffer()).toString('utf16le'));
-
-      const text = await xmlParser.parseStringPromise(xml).then(parsed => parsed.music.song[0]);
-
-      artist = text.artist[0];
-      songTitle = text.name[0];
-    }
-
-    return { artist, songTitle };
   }
 }
