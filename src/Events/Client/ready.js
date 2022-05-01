@@ -53,7 +53,6 @@ module.exports = class extends Event {
     let status = [
       `Estou em ${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(this.client.guilds.cache.size)} servidor(es)`,
       `Escutando música com ${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(this.client.users.cache.size)} usiario(s)`,
-      `Tocando ${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(this.client.vulkava.nodes.players)} música(s)`,
     ]
 
     setInterval(() => {
@@ -62,10 +61,11 @@ module.exports = class extends Event {
 
       this.client.user.setPresence({
         status: 'idle',
-        game: {
-          name: randStatus,
-          type: 'WATCHING'
-        }
+        activities: [
+          {
+            name: randStatus
+          }
+        ]
       })
 
     }, 20 * 1000)
