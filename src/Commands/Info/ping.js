@@ -8,6 +8,6 @@ module.exports = class extends Command {
     })
   }
   run = async (interaction) => {
-    interaction.reply({ content: `Meu ping é \`${this.client.ws.ping.toFixed(2)}ms\``})
+    interaction.reply({ content: `Meu ping é \`${this.client.ws.ping.toFixed(2)}ms\``, ephemeral: true })
   }
 }
