@@ -26,7 +26,7 @@ module.exports = class extends Client {
     this.application?.commands.set(this.commands)
   }
 
-  statusClient() {
+  async statusClient() {
     let status = [
       { name: `${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(this.guilds.cache.size)} servidor(es)`, type: 'WATCHING'},
       { name: `com ${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(this.users.cache.size)} usiario(s)`, type: 'PLAYING' },
