@@ -15,8 +15,8 @@ module.exports = class extends Client {
     this.commands = []
     this.loadCommands()
     this.loadEvents()
-    this.statusClient()
     this.connectLavaLink()
+    this.statusClient()
     this.guildCache = new Map()
     this.util = Util
     this.request = request
