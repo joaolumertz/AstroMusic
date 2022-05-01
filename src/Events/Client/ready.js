@@ -53,6 +53,8 @@ module.exports = class extends Event {
     let status = [
       `Estou em ${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(this.client.guilds.cache.size)} servidor(es)`,
       `Escutando música com ${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(this.client.users.cache.size)} usiario(s)`,
+      `Ouvindo ${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(await this.client.vulkava.players.size)} músicas`,
+      `Online há ${this.client.util.msToDate(process.uptime() * 1e3)}`,
     ]
 
     setInterval(() => {
