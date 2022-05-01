@@ -52,7 +52,7 @@ module.exports = class extends Event {
 
     setInterval(async () => {
       await this.client.statusClient()
-    }, 2e4)
+    }, 20 * 1000)
 
     await this.client.connectLavaLink()
     await this.client.connectToDatabase()
