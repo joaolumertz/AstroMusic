@@ -67,12 +67,13 @@ module.exports = class NewBot extends Vulkava {
       const embed = new MessageEmbed()
       .setColor("PURPLE")
       .setTitle("🎶 Tocando Agora")
+      .setThumbnail(track.thumbnail)
       .setAuthor({ name: `${guild.name}`, iconURL: guild.iconURL({ dynamic: true }) || `https://www.designtagebuch.de/wp-content/uploads/mediathek//2021/05/discord-logo.jpg` })
       .addFields(
         [
-          { name: "Música", value: track.title, inline: false },
-          { name: "Solicitado por", value: requester.tag, inline: false },
-          { name: "Duração", value: this.client.util.format(track.duration), inline: false },
+          { name: "Música", value: `\`${track.title}\``, inline: false },
+          { name: "Solicitado por", value: `\`${requester.tag}\``, inline: false },
+          { name: "Duração", value: `\`${this.client.util.format(track.duration)}\``, inline: false },
         ]
       )
       
