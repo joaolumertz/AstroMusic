@@ -111,38 +111,9 @@ module.exports = class extends Command {
 
           tracks[0].setRequester(interaction.user);
           player.queue.push(tracks[0]);
-
-          // let embedE = new MessageEmbed()
-          //   .setAuthor({
-          //     name: interaction.guild.name,
-          //     iconURL:
-          //       interaction.guild.iconURL({ dynamic: true }) ||
-          //       `https://www.designtagebuch.de/wp-content/uploads/mediathek//2021/05/discord-logo.jpg`,
-          //   })
-          //   .setColor("RANDOM")
-          //   .setTitle("Musíca adicionada")
-          //   .setURL(tracks[0].uri)
-          //   .setDescription(`Nova músca adicionada à fila.`)
-          //   .setThumbnail(tracks[0].thumbnail)
-          //   .setFields(
-          //     { name: "Título", value: `\`${tracks[0].title}\``, inline: true },
-          //     {
-          //       name: "Solicitado por",
-          //       value: tracks[0].requester.toString(),
-          //       inline: true,
-          //     },
-          //     { name: "||\n||", value: "||\n||", inline: true },
-          //     {
-          //       name: "Duração",
-          //       value: `\`${ms(tracks[0].duration, { long: true })}\``,
-          //       inline: true,
-          //     },
-          //     { name: "||\n||", value: "||\n||", inline: true }
-          //   );
-
             
           if (!player.playing && !player.paused) player.play();
-          await interaction.reply({ content: `📋 Nova música adicionada na fila!\n${tracks[0].title}.` }).catch(() => {});
+          await interaction.reply({ content: `📋 Nova música adicionada na fila!\n\`${tracks[0].title}\`.` }).catch(() => {});
         }
       }
     } catch (e) {
