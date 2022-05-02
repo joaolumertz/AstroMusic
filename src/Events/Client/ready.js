@@ -85,7 +85,7 @@ module.exports = class extends Event {
           this.client.user.setPresence({
             status: "online",
             activities: {
-              name: `há ${Util.msToDate(process.uptime() * 1e3)}`, 
+              name: `há ${this.client.util.msToDate(process.uptime() * 1e3)}`, 
               type: 'STREAMING'
             }
           });
