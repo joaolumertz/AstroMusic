@@ -26,11 +26,11 @@
     },
     "pause": {
       "alr_paused": "The music is already paused...",
-      "paused": "The song `<music_title>`\nHas been successfully paused by <user>."
+      "paused": "The song `<music_title>`\nHas been successfully paused by `<user>`."
     },
     "resume": {
       "alr_resumed": "The song is not paused...",
-      "resumed": "The song `<music_title>`\nHas been successfully resumed by <user>."
+      "resumed": "The song `<music_title>`\nHas been successfully resumed by `<user>`."
     }
   }
 }

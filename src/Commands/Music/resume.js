@@ -25,7 +25,7 @@ module.exports = class extends Command {
       }
 
       player.pause(false)
-      interaction.reply({ content: this.client.la[ls].music.resume.resumed.replace("<music_title>", player.current?.title).replace("<user>", interaction.user) })
+      interaction.reply({ content: this.client.la[ls].music.resume.resumed.replace("<music_title>", player.current?.title).replace("<user>", interaction.user.tag) })
     }
 
     const isDJ = await this.client.vulkava.hasDJRole(interaction.member)
