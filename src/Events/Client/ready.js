@@ -50,6 +50,8 @@ module.exports = class extends Event {
     console.log(colorful(roxo, `―――――――――――――――――― Bot ――――――――――――――――――`))
     console.log(c.blue(`${mosaic}`))
 
+    let i = 0;
+
     const stats = async () => {
       switch(i) {
         case 0 : 
