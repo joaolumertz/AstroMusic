@@ -132,10 +132,11 @@ module.exports = class extends Client {
     });
   }
 
-  async statusClient() {
+  async statusClient(client) {
     let status = [
-      { name: `${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(this.guilds.cache.size)} servidor(es)`, type: 'WATCHING'},
-      { name: `com ${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(this.users.cache.size)} usiario(s)`, type: 'PLAYING' },
+      { name: `${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(client.guilds.cache.size)} servidor(es)`, type: 'WATCHING'},
+      { name: `com ${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(client.users.cache.size)} usiario(s)`, type: 'PLAYING' },
+      { name: `${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(await client.vulkava.players.size)} músicas`, type: 'LISTENING' },
       { name: `há ${Util.msToDate(process.uptime() * 1e3)}`, type: 'STREAMING' },
     ]
 
@@ -144,10 +145,10 @@ module.exports = class extends Client {
     let presence = status[currentPresence]
 
     if(typeof presence === 'function') {
-      presence = presence(this)
+      presence = presence(client)
     }
 
-    this.user.setPresence({
+    client.user.setPresence({
       activities: presence,
       status: 'online'
     })
