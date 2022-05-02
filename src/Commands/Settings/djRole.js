@@ -5,7 +5,7 @@ module.exports = class extends Command {
   constructor(client) {
     super(client, {
       name: "djrole",
-      description: "Seta o cargo de DJ",
+      description: "〔⚙ • Config〕Seta o cargo de DJ",
       permissions: [Permissions.FLAGS.MANAGE_ROLES],
       options: [
         {

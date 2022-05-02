@@ -5,7 +5,7 @@ module.exports = class extends Command {
   constructor(client) {
     super(client, {
       name: 'nodes',
-      description: "Veja as informações dos nodes do Lavalink"
+      description: "〔❗ • Info〕Veja as informações dos nodes do Lavalink."
     })
   }
   run = async (interaction) => {

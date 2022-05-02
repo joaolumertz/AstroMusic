@@ -5,7 +5,7 @@ module.exports = class extends Command {
   constructor(client) {
     super(client, {
       name: "setlanguage",
-      description: "Mude a linguagem do bot.",
+      description: "〔⚙ • Config〕Mude a linguagem do bot.",
       permissions: [Permissions.FLAGS.ADMINISTRATOR],
       options: [
         {

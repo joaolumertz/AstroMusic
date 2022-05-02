@@ -4,7 +4,7 @@ module.exports = class extends Command {
   constructor(client) {
     super(client, {
       name: "ping",
-      description: "Veja o ping do bot",
+      description: "〔❗ • Info〕Veja o ping do bot.",
     })
   }
   run = async (interaction) => {
