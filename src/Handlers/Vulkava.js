@@ -46,6 +46,7 @@ module.exports = class NewBot extends Vulkava {
         return;
       }
 
+      
       if(!player.textChannelId) return;
 
       const channel = this.client.channels.cache.get(player.textChannelId)
@@ -59,21 +60,23 @@ module.exports = class NewBot extends Vulkava {
         delete player.lastPlayingMsgID
         return;
       }
-
+      
       const requester = player.current?.requester
-
+      
       const guild = await this.client.guilds.cache.get(player.guildId)
+
+      const ls = await this.client.db.guilds.findOne({ _idG: guild.id }).settings.lang
 
       const embed = new MessageEmbed()
       .setColor("PURPLE")
-      .setTitle("🎶 Tocando Agora")
+      .setTitle(this.client.la[ls].music.track_start.title)
       .setThumbnail(track.thumbnail)
       .setAuthor({ name: `${guild.name}`, iconURL: guild.iconURL({ dynamic: true }) || `https://www.designtagebuch.de/wp-content/uploads/mediathek//2021/05/discord-logo.jpg` })
       .addFields(
         [
-          { name: "Música", value: `\`${track.title}\``, inline: false },
-          { name: "Solicitado por", value: `\`${requester.tag}\``, inline: false },
-          { name: "Duração", value: `\`${this.client.util.format(track.duration)}\``, inline: false },
+          { name: this.client.la[ls].music.track_start.field1, value: `\`${track.title}\``, inline: false },
+          { name: this.client.la[ls].music.track_start.field2, value: `\`${requester.tag}\``, inline: false },
+          { name: this.client.la[ls].music.track_start.field3, value: `\`${this.client.util.format(track.duration)}\``, inline: false },
         ]
       )
       
@@ -84,8 +87,11 @@ module.exports = class NewBot extends Vulkava {
     
     this.on('queueEnd', async (player) => {
       const channel = client.channels.cache.get(player.textChannelId);
-    
-      channel.send(`A lista de músicas acabou...\nUse **\`/play\`** e adicione mais músicas...`);
+
+      const guild = await this.client.guilds.cache.get(player.guildId)
+      const ls = await this.client.db.guilds.findOne({ _idG: guild.id }).settings.lang
+
+      channel.send(this.client.la[ls].music.queue_end.message);
     
       player.destroy();
     })

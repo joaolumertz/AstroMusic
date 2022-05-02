@@ -31,6 +31,15 @@
     "resume": {
       "alr_resumed": "The song is not paused...",
       "resumed": "The song `<music_title>`\nHas been successfully resumed by `<user>`."
+    },
+    "track_start": {
+      "title": "🎶 Now Playing",
+      "field1": "Song",
+      "field2": "Requester",
+      "field3": "Duration"
+    },
+    "queue_end": {
+      "message": "Song queue has ended...\nUse **`/play`** and add more songs..."
     }
   }
 }

@@ -31,6 +31,15 @@
     "resume": {
       "alr_resumed": "A música não está pausada...",
       "resumed": "A música `<music_title>`\nFoi despausada com sucesso por `<user>`."
+    },
+    "track_start": {
+      "title": "🎶 Tocando Agora",
+      "field1": "Música",
+      "field2": "Solicitado por",
+      "field3": "Duração"
+    },
+    "queue_end": {
+      "message": "A lista de músicas acabou...\nUse **`/play`** e adicione mais músicas..."
     }
   }
 }
