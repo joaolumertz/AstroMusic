@@ -1,10 +1,12 @@
 const Command = require('../../Handlers/Command')
+const { Permissions } = require('discord.js')
 
 module.exports = class extends Command {
   constructor(client) {
     super(client, {
       name: "setlanguage",
       description: "Mude a linguagem do bot.",
+      permissions: [Permissions.FLAGS.ADMINISTRATOR],
       options: [
         {
           name: "language",
