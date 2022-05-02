@@ -56,9 +56,7 @@ module.exports = class extends Event {
     await this.client.registreCommands()
     await this.client.loadBotCache()
 
-    setInterval(async () => {
-      await this.client.statusClient(this.client)
-    }, 20 * 1000)
+    await this.client.statusClient()
 
     this.client.vulkava.start(this.client.user.id)
   }

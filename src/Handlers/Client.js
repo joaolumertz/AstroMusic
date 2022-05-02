@@ -132,31 +132,51 @@ module.exports = class extends Client {
     });
   }
 
-  async statusClient(client) {
-    let status = [
-      { name: `${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(client.guilds.cache.size)} servidor(es)`, type: 'WATCHING'},
-      { name: `com ${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(client.users.cache.size)} usiario(s)`, type: 'PLAYING' },
-      { name: `${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(await client.vulkava.players.size)} músicas`, type: 'LISTENING' },
-      { name: `há ${Util.msToDate(process.uptime() * 1e3)}`, type: 'STREAMING' },
-    ]
+  async statusClient() {
+    let i = 0;
 
-    let currentPresence = 0;
-
-    let presence = status[currentPresence]
-
-    if(typeof presence === 'function') {
-      presence = presence(client)
+    const stats = async () => {
+      switch(i) {
+        case 0 : 
+          this.user.setPresence({
+            status: "online",
+            activities: {
+              name: `${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(this.guilds.cache.size)} servidor(es)`, 
+              type: 'WATCHING'
+            }
+          });
+          break;
+        case 1 :
+          this.user.setPresence({
+            status: "online",
+            activities: {
+              name: `com ${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(this.users.cache.size)} usiario(s)`, 
+              type: 'PLAYING'
+            }
+          });
+          break;
+        case 2 :
+          this.user.setPresence({
+            status: "online",
+            activities: {
+              name: `${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(this.vulkava.players.size)} músicas`, 
+              type: 'LISTENING'
+            }
+          });
+          break;
+        case 3 :
+          this.user.setPresence({
+            status: "online",
+            activities: {
+              name: `há ${Util.msToDate(process.uptime() * 1e3)}`, 
+              type: 'STREAMING'
+            }
+          });
+          break;
+      }
+      i = i % 3 + 1
     }
-
-    client.user.setPresence({
-      activities: presence,
-      status: 'online'
-    })
-
-    currentPresence++
-    if(currentPresence >= status.length) {
-      currentPresence = 0
-    }
-
+    stats()
+    setInterval(() => stats(), 30000)
   }
 }
