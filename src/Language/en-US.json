@@ -6,6 +6,20 @@
       "notvchannelwithbot": "You need to be on the same voice channel as the bot.",
       "notdj": "Only someone with the DJ role can use this command.",
       "notdjoreq": "Only the person who requested the song or someone with the DJ role can use this command."
+    },
+    "play": {
+      "load_failed": "Failed to load music.",
+      "no_matches": "No track found.",
+      "channelfull": "Channel is full.",
+      "playlist_embed": {
+        "title": "Playlist Added!",
+        "filed1": "Playlist",
+        "field2": "Requester",
+        "field3": "Duration",
+        "field4": "Tracks Length"
+      },
+      "added_song": "📋 New song added to the queue!",
+      "error": "An error occurred while searching for the track."
     }
   }
 }

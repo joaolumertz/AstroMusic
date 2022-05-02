@@ -6,6 +6,20 @@
       "notvchannelwithbot": "Você precisa estar no mesmo canal de voz que o bot.",
       "notdj": "Apenas alguém com o cargo de DJ podem usar este comando.",
       "notdjoreq": "Apenas quem requisitou a música ou alguém com o cargo de DJ podem usar este comando."
+    },
+    "play": {
+      "load_failed": "Falha ao carregar a música.",
+      "no_matches": "Nenhuma música encontrada.",
+      "channelfull": "Canal está cheio.",
+      "playlist_embed": {
+        "title": "Playlist Adicionada!",
+        "filed1": "Playlist",
+        "field2": "Solicitado por",
+        "field3": "Duração",
+        "field4": "Músicas"
+      },
+      "added_song": "📋 Nova música adicionada na fila!",
+      "error": "Ocorreu um erro ao procurar a música."
     }
   }
 }

@@ -41,9 +41,9 @@ module.exports = class extends Command {
       if(res.tracks.length === 1 && res.tracks[0].title != player.current?.title) res = await this.client.vulkava.search(res.tracks[0].title)
 
       if (res.loadType === "LOAD_FAILED") {
-        return interaction.reply({ content: "Falha ao carregar a música." });
+        return interaction.reply({ content: this.client.la[ls].music.play.load_failed, ephemeral: true });
       } else if (res.loadType === "NO_MATCHES") {
-        return interaction.reply({ content: "Nenhuma música encontrada" });
+        return interaction.reply({ content: this.client.la[ls].music.play.no_matches, ephemeral: true });
       } else {
 
         if (player.radio) {
@@ -60,7 +60,7 @@ module.exports = class extends Command {
             voiceChannel.voiceMembers.size >= voiceChannel.userLimit
           ) {
             player.destroy();
-            return interaction.reply({ content: "Canal está cheio" });
+            return interaction.reply({ content: this.client.la[ls].music.play.channelfull, ephemeral: true });
           }
           player.connect();
         }
@@ -85,18 +85,18 @@ module.exports = class extends Command {
                 `https://www.designtagebuch.de/wp-content/uploads/mediathek//2021/05/discord-logo.jpg`,
             })
             .setColor("PURPLE")
-            .setTitle("Playlist Adicionada!")
+            .setTitle(this.client.la[ls].music.play.playlist_embed.title)
             .setThumbnail(res.tracks[0].thumbnail)
             .addFields([
-              { name: "Playlist", value: `\`${playlist.name}\``, inline: true },
-              { name: "Solicitado por", value: `${res.tracks[0].requester.toString()}`, inline: true },
+              { name: this.client.la[ls].music.play.playlist_embed.field1, value: `\`${playlist.name}\``, inline: true },
+              { name: this.client.la[ls].music.play.playlist_embed.field2, value: `${res.tracks[0].requester.toString()}`, inline: true },
               { name: "||\n||", value: `||\n||`, inline: true },
               {
-                name: "Duração",
+                name: this.client.la[ls].music.play.playlist_embed.field3,
                 value: `\`${this.client.util.format(playlist.duration || 0, { long: true })}\``,
                 inline: true
               },
-              { name: "Músicas", value: `\`${res.tracks.length}\``, inline: true },
+              { name: this.client.la[ls].music.play.playlist_embed.field4, value: `\`${res.tracks.length}\``, inline: true },
               { name: "||\n||", value: `||\n||`, inline: true },
             ]);
 
@@ -113,43 +113,13 @@ module.exports = class extends Command {
           player.queue.push(tracks[0]);
             
           if (!player.playing && !player.paused) player.play();
-          await interaction.reply({ content: `📋 Nova música adicionada na fila!\n\`${tracks[0].title}\`.` }).catch(() => {});
+          await interaction.reply({ content: `${this.client.la[ls].music.play.added_song}\n\`${tracks[0].title}\`.` }).catch(() => {});
         }
       }
     } catch (e) {
       interaction.reply({
-        content: `Ocorreu um erro ao procurar a música.\n${e}`,
+        content: `${this.client.la[ls].music.play.error}\n${e}`,
       });
     }
   };
-
-  async runAutoComplete(interaction, value) {
-    if(!value) {
-      interaction.result([]);
-      return;
-    }
-
-    const res = await this.client.request(`https://clients1.google.com/complete/search?client=youtube&hl=pt-BR&ds=yt&q=${encodeURIComponent(value)}`, {
-      headers: {
-        'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.60 Safari/537.36'
-      }
-    }).then(async (r) => Buffer.from(await r.body.arrayBuffer()).toString('latin1'));
-
-    let choices = [];
-
-    let data = res.split("[");
-
-    for(var i =3, min = Math.min(8 * 2, data.length); i < min; i+=2) {
-      let choice = data[i].split('"')[1].replace(/\\u([0-9a-fA-F]{4})/g, (_, cc) => String.fromCharCode(parseInt(cc, 16)))
-
-      if(choice) {
-        choices.push({
-          name: choice,
-          value: choice
-        })
-      }
-    }
-
-    interaction.result(choices);
-  }
 };
