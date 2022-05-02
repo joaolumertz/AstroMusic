@@ -59,7 +59,7 @@ module.exports = class extends Event {
             status: "online",
             activities: [
               {
-                name: `${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(this.client.guilds.cache.size)} servidor(es)`, 
+                name: `${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(await this.client.guilds.cache.size)} servidor(es)`, 
                 type: 'WATCHING'
               }
             ]
@@ -70,7 +70,7 @@ module.exports = class extends Event {
             status: "online",
             activities: [ 
               {
-                name: `com ${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(this.client.users.cache.size)} usiario(s)`, 
+                name: `com ${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(await this.client.users.cache.size)} usiario(s)`, 
                 type: 'PLAYING'
               }
             ]
@@ -81,7 +81,7 @@ module.exports = class extends Event {
             status: "online",
             activities: [
               {
-                name: `${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(this.client.vulkava.players.size)} músicas`, 
+                name: `${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(await this.client.vulkava.players.size)} músicas`, 
                 type: 'LISTENING'
               }
             ]

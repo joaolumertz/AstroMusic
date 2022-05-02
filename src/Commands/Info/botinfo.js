@@ -13,16 +13,16 @@ module.exports = class extends Command {
   }
   run = async (interaction, ls) => {
 
-    const data = moment(this.client.user.createdTimestamp).format("LLL")
-    const owner = this.client.users.cache.get('518207099302576160').tag
+    const data = moment(await this.client.user.createdTimestamp).format("LLL")
+    const owner = await this.client.users.cache.get('518207099302576160').tag
     const guilds = Intl.NumberFormat('pt-BR', {
       notation: 'compact',
       compactDisplay: 'short'
-    }).format(this.client.guilds.cache.size)
+    }).format(await this.client.guilds.cache.size)
     const users = Intl.NumberFormat('pt-BR', {
       notation: 'compact',
       compactDisplay: 'short'
-    }).format(this.client.users.cache.size)
+    }).format(await this.client.users.cache.size)
     
     let row = new MessageActionRow()
     .addComponents(
