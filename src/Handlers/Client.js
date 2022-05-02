@@ -19,6 +19,7 @@ module.exports = class extends Client {
     this.guildCache = new Map()
     this.util = Util
     this.request = request
+    this.statusClient()
   }
 
   registreCommands() {
