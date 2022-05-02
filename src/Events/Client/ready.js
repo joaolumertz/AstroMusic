@@ -57,37 +57,45 @@ module.exports = class extends Event {
         case 0 : 
           this.client.user.setPresence({
             status: "online",
-            activities: {
-              name: `${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(this.client.guilds.cache.size)} servidor(es)`, 
-              type: 'WATCHING'
-            }
+            activities: [
+              {
+                name: `${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(this.client.guilds.cache.size)} servidor(es)`, 
+                type: 'WATCHING'
+              }
+            ]
           });
           break;
         case 1 :
           this.client.user.setPresence({
             status: "online",
-            activities: {
-              name: `com ${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(this.client.users.cache.size)} usiario(s)`, 
-              type: 'PLAYING'
-            }
+            activities: [ 
+              {
+                name: `com ${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(this.client.users.cache.size)} usiario(s)`, 
+                type: 'PLAYING'
+              }
+            ]
           });
           break;
         case 2 :
           this.client.user.setPresence({
             status: "online",
-            activities: {
-              name: `${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(this.client.vulkava.players.size)} músicas`, 
-              type: 'LISTENING'
-            }
+            activities: [
+              {
+                name: `${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(this.client.vulkava.players.size)} músicas`, 
+                type: 'LISTENING'
+              }
+            ]
           });
           break;
         case 3 :
           this.client.user.setPresence({
             status: "online",
-            activities: {
-              name: `há ${this.client.util.msToDate(process.uptime() * 1e3)}`, 
-              type: 'STREAMING'
-            }
+            activities: [
+              {
+                name: `há ${this.client.util.msToDate(process.uptime() * 1e3)}`, 
+                type: 'STREAMING'
+              }
+            ]
           });
           break;
       }
