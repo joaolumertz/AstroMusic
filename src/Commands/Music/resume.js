@@ -21,11 +21,11 @@ module.exports = class extends Command {
 
     const resume = () => {
       if(!player.paused) {
-        return interaction.reply({ content: "A música não está pausada...", ephemeral: true })
+        return interaction.reply({ content: this.client.la[ls].music.resume.alr_resumed, ephemeral: true })
       }
 
       player.pause(false)
-      interaction.reply({ content: `A música \`${player.current?.title}\`\nFoi despausada com sucesso por ${interaction.user}.` })
+      interaction.reply({ content: this.client.la[ls].music.resume.resumed.replace("<music_title>", player.current?.title).replace("<user>", interaction.user) })
     }
 
     const isDJ = await this.client.vulkava.hasDJRole(interaction.member)
