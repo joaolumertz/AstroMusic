@@ -19,7 +19,6 @@ module.exports = class extends Client {
     this.guildCache = new Map()
     this.util = Util
     this.request = request
-    this.statusClient()
   }
 
   registreCommands() {
@@ -130,53 +129,5 @@ module.exports = class extends Client {
         djRole: guildData?.settings.djRole ?? '',
       });
     });
-  }
-
-  async statusClient() {
-    let i = 0;
-
-    const stats = async () => {
-      switch(i) {
-        case 0 : 
-          this.setPresence({
-            status: "online",
-            activities: {
-              name: `${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(this.guilds.cache.size)} servidor(es)`, 
-              type: 'WATCHING'
-            }
-          });
-          break;
-        case 1 :
-          this.setPresence({
-            status: "online",
-            activities: {
-              name: `com ${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(this.users.cache.size)} usiario(s)`, 
-              type: 'PLAYING'
-            }
-          });
-          break;
-        case 2 :
-          this.setPresence({
-            status: "online",
-            activities: {
-              name: `${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(this.vulkava.players.size)} músicas`, 
-              type: 'LISTENING'
-            }
-          });
-          break;
-        case 3 :
-          this.setPresence({
-            status: "online",
-            activities: {
-              name: `há ${Util.msToDate(process.uptime() * 1e3)}`, 
-              type: 'STREAMING'
-            }
-          });
-          break;
-      }
-      i = i % 3 + 1
-    }
-    stats()
-    setInterval(() => stats(), 30000)
   }
 }
