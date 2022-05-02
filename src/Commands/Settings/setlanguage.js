@@ -10,7 +10,7 @@ module.exports = class extends Command {
           name: "language",
           description: "Selecione a linguagem do bot",
           type: "STRING",
-          requried: true,
+          required: true,
           choices: [
             { name: "br", value: "pt-BR" },
             { name: "en", value: "en-US" },
