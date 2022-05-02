@@ -138,7 +138,7 @@ module.exports = class extends Client {
     const stats = async () => {
       switch(i) {
         case 0 : 
-          this.user.setPresence({
+          this.setPresence({
             status: "online",
             activities: {
               name: `${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(this.guilds.cache.size)} servidor(es)`, 
@@ -147,7 +147,7 @@ module.exports = class extends Client {
           });
           break;
         case 1 :
-          this.user.setPresence({
+          this.setPresence({
             status: "online",
             activities: {
               name: `com ${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(this.users.cache.size)} usiario(s)`, 
@@ -156,7 +156,7 @@ module.exports = class extends Client {
           });
           break;
         case 2 :
-          this.user.setPresence({
+          this.setPresence({
             status: "online",
             activities: {
               name: `${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(this.vulkava.players.size)} músicas`, 
@@ -165,7 +165,7 @@ module.exports = class extends Client {
           });
           break;
         case 3 :
-          this.user.setPresence({
+          this.setPresence({
             status: "online",
             activities: {
               name: `há ${Util.msToDate(process.uptime() * 1e3)}`, 
