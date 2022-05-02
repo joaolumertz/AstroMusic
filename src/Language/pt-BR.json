@@ -25,8 +25,12 @@
       "stoped": "Todas as músicas da fila foram paradas."
     },
     "pause": {
-      "alr_paused": "A música já está pausada.",
+      "alr_paused": "A música já está pausada...",
       "paused": "A música `<music_title>`\nFoi pausada com sucesso por <user>."
+    },
+    "resume": {
+      "alr_resumed": "A música não está pausada...",
+      "resumed": "A música `<music_title>`\nFoi despausada com sucesso por <user>."
     }
   }
 }
