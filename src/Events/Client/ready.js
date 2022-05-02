@@ -55,22 +55,24 @@ module.exports = class extends Event {
     const stats = async () => {
       switch(i) {
         case 0 : 
-          this.client.user.setPresence({
-            status: "online",
-            activities: [
-              {
-                name: `${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(await this.client.guilds.cache.size)} servidor(es)`, 
-                type: 'WATCHING'
-              }
-            ]
-          });
-          break;
+        this.client.user.setPresence({
+          status: "online",
+          activities: [
+            {
+              name: `${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(await this.client.guilds.cache.size)} servidor(es)`, 
+              type: 'WATCHING'
+            }
+          ]
+        });
+        break;
         case 1 :
+          let users = 0;
+          await this.client.guilds.cache.forEach((guild) => { users += guild.memberCount })
           this.client.user.setPresence({
             status: "online",
             activities: [ 
               {
-                name: `com ${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(await this.client.users.cache.size)} usiario(s)`, 
+                name: `com ${Intl.NumberFormat('pr-BR', { notation: 'compact', compactDisplay: 'short' }).format(users)} usiario(s)`, 
                 type: 'PLAYING'
               }
             ]

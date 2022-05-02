@@ -1,6 +1,7 @@
 const Client = require("./Handlers/Client.js")
 
 const fs = require('fs')
+const { Intents } = require("discord.js")
 
 require('dotenv').config()
 
@@ -19,13 +20,13 @@ const client = new Client({
     "USER"
   ],
   intents: [
-    "GUILDS",
-    "GUILD_MESSAGE_REACTIONS",
-    "GUILD_MESSAGES",
-    "GUILD_INVITES",
-    "GUILD_VOICE_STATES",
-    "GUILD_MEMBERS",
-    "GUILD_PRESENCES"
+    Intents.FLAGS.GUILDS,
+    Intents.FLAGS.GUILD_MESSAGES,
+    Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
+    Intents.FLAGS.GUILD_INVITES,
+    Intents.FLAGS.GUILD_VOICE_STATES,
+    Intents.FLAGS.GUILD_MEMBERS,
+    Intents.FLAGS.GUILD_PRESENCES
   ]
 })
 

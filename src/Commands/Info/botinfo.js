@@ -23,10 +23,12 @@ module.exports = class extends Command {
       notation: 'compact',
       compactDisplay: 'short'
     }).format(await this.client.channels.cache.size)
+    let u = 0;
+    await this.client.guilds.cache.forEach((guild) => { u += guild.memberCount })
     const users = Intl.NumberFormat('pt-BR', {
       notation: 'compact',
       compactDisplay: 'short'
-    }).format(await this.client.users.cache.size)
+    }).format(u)
     const uptime = await this.client.util.msToDate(process.uptime() * 1e3)
     
     const playing = Intl.NumberFormat('pt-BR', {
