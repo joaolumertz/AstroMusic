@@ -65,7 +65,8 @@ module.exports = class NewBot extends Vulkava {
       
       const guild = await this.client.guilds.cache.get(player.guildId)
 
-      const ls = await this.client.db.guilds.findOne({ _idG: guild.id }).settings.lang
+      const dbGuild = await this.client.db.guilds.findOne({ _idG: guild.id })
+      const ls = await dbGuild.settings.lang
 
       const embed = new MessageEmbed()
       .setColor("PURPLE")
