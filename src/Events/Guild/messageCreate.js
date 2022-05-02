@@ -22,7 +22,7 @@ module.exports = class extends Event {
     )
 
     if (message.content.match(getMention(this.client.user.id))) {
-      return message.reply({ content: `Olá ${message.author}, meu nome é ***${this.client.user.username}***\nUse \`/help\` e veja o que eu posso fazer.`, components: [row] });
+      return message.reply({ content: `Olá ${message.author}, meu nome é ***${this.client.user.username}***\nUse \`/play\` e comece a escutar alguma música.`, components: [row] });
     }
   }
 }

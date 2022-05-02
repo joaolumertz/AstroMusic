@@ -20,6 +20,13 @@
       },
       "added_song": "📋 Nova música adicionada na fila!",
       "error": "Ocorreu um erro ao procurar a música."
+    },
+    "stop": {
+      "stoped": "Todas as músicas da fila foram paradas."
+    },
+    "pause": {
+      "alr_paused": "A música já está pausada.",
+      "paused": "A música <music_title>\nFoi pausada com sucesso por <user>."
     }
   }
 }

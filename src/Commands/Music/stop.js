@@ -22,7 +22,7 @@ module.exports = class extends Command {
 
     const stop = () => {
       player.destroy()
-      interaction.reply({ content: "Todas as músicas da fila foram paradas." })
+      interaction.reply({ content: this.client.la[ls].music.stop.stoped })
     }
 
     let isDJ = await this.client.vulkava.hasDJRole(interaction.member)
