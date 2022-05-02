@@ -4,7 +4,7 @@ const { MessageEmbed, MessageButton, MessageActionRow } = require('discord.js')
 const moment = require('moment')
 moment.locale('pt-BR')
 
-module.exports = class extends Client {
+module.exports = class extends Command {
   constructor(client) {
     super(client, {
       name: 'botinfo',
