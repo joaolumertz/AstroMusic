@@ -22,7 +22,7 @@ module.exports = class extends Command {
       text += `( ${await nodes[i].identifier} ) Tocando: ${await nodes[i].stats.playingPlayers} | Players: ${await nodes[i].stats.players} | Ping: ${pingnode}ms | Uptime: ${uptime}\n`
     }
 
-    interaction.reply({ content: `\`\`\`${text}\`\`\`` })
+    interaction.reply({ content: `\`\`\`\n${text}\`\`\`` })
 
   }
 }
