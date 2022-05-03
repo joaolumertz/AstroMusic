@@ -28,6 +28,8 @@ module.exports = class NewBot extends Vulkava {
       }
     });
 
+    this.pingNode();
+
     this.on('error', async (node, error) => {
       console.log(`Erro no ${node.identifier}: ${error.message}`)
     });
@@ -126,5 +128,21 @@ module.exports = class NewBot extends Vulkava {
       }
     }
     return false;
+  }
+
+  async pingNode() {
+    for(const node of this.nodes.values()) {
+      if(node.options.hostname.includes('heroku')) {
+        setInterval(async () => {
+          await this.client.request(`https://${node.options.hostname}/version`, {
+            headers: {
+              Authorization: node.options.password
+            }
+          }).then((r) => {
+            r.body.dump()
+          })
+        }, 25 * 60 * 1000)
+      }
+    }
   }
 }
