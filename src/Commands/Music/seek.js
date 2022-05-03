@@ -46,7 +46,7 @@ module.exports = class extends Command {
         const parts = time.split(':')
 
         if(parts.length > 3) {
-          interaction.reply({ content: `${this.client.la[ls].music.seek.time_error}`, ephemeral: true })
+          interaction.reply({ content: this.client.la[ls].music.seek.time_error.replace("<duration>", player.current?.duration / 1000), ephemeral: true })
           return;
         }
 
@@ -57,12 +57,12 @@ module.exports = class extends Command {
       }
 
       if((finalTime && (finalTime < 0 || finalTime * 1000 > player.current?.duration)) || Number(time) < 0 || Number(time) * 1000 > player.current?.duration) {
-        interaction.reply({ content: `${this.client.la[ls].music.seek.time_error}`, ephemeral: true })
+        interaction.reply({ content: this.client.la[ls].music.seek.time_error.replace("<duration>", player.current?.duration / 1000), ephemeral: true })
         return;
       }
 
       player.seek(finalTime && (finalTime * 1000) || Number(time) * 1000);
-      interaction.reply({ content: `${this.client.la[ls].music.seek.time_success}`})
+      interaction.reply({ content: this.client.la[ls].music.seek.time_success.replace("<tempo>", tempo) })
     } 
 
     const isDJ = await this.client.vulkava.hasDJRole(interaction.member)
