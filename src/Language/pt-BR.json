@@ -32,6 +32,12 @@
       "alr_resumed": "A música não está pausada...",
       "resumed": "A música `<music_title>`\nFoi despausada com sucesso por `<user>`."
     },
+    "seek": {
+      "invalid_time": "Tempo inválido! Tente no formato `ss` ou `hh:mm:ss`.",
+      "error_duration:": "Não consigui ver o tempo desta música.",
+      "time_error": "O tempo tem que variar entre `0 - ${player.current?.duration / 1000}` segundos.",
+      "time_success": "O tempo da música foi setado em `${tempo}`."
+    },
     "track_start": {
       "title": "🎶 Tocando Agora",
       "field1": "Música",

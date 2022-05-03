@@ -32,6 +32,12 @@
       "alr_resumed": "The song is not paused...",
       "resumed": "The song `<music_title>`\nHas been successfully resumed by `<user>`."
     },
+    "seek": {
+      "invalid_time": "Invalid time! Try in `ss` or `hh:mm:ss` format.",
+      "error_duration:": "I can't see the duration of this song.",
+      "time_error": "The time must be between `0 - ${player.current?.duration / 1000}` seconds.",
+      "time_success": "The song time has been set to `${tempo}`."
+    },
     "track_start": {
       "title": "🎶 Now Playing",
       "field1": "Song",

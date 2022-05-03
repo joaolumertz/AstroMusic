@@ -7,7 +7,7 @@ module.exports = class extends Command {
       description: "〔🎶 • Música〕Pule para um determinado tempo da música...",
       options: [
         {
-          name: 'tempo',
+          name: 'time',
           description: 'Informe o tempo da música para o qual quer avançar.',
           type: 'STRING',
           required: true
@@ -27,16 +27,16 @@ module.exports = class extends Command {
   
     if(voiceChannel.id !== player.voiceChannelId) return interaction.reply({ content: this.client.la[ls].music.common.notvchannelwithbot, ephemeral: true })
 
-    const tempo = await interaction.options.getString('tempo')
+    const tempo = await interaction.options.getString('time')
 
     const seek = async (time) => {
       if(Number(time) !== 0 && !Number(time.replace(/:/g, ''))) {
-        interaction.reply({ content: `Tempo inválido! Tente no formato \`ss\` ou \`hh:mm:ss\`.`, ephemeral: true })
+        interaction.reply({ content: this.client.la[ls].music.seek.invalid_time, ephemeral: true })
         return;
       }
 
       if(!player.current?.duration) {
-        interaction.reply({ content: `Não consigui ver o tempo desta música.`, ephemeral: true })
+        interaction.reply({ content: this.client.la[ls].music.seek.error_duration, ephemeral: true })
         return;
       }
 
@@ -46,7 +46,7 @@ module.exports = class extends Command {
         const parts = time.split(':')
 
         if(parts.length > 3) {
-          interaction.reply({ content: `O tempo tem que variar entre \`0 - ${player.current?.duration / 1000}\` segundos.`, ephemeral: true })
+          interaction.reply({ content: `${this.client.la[ls].music.seek.time_error}`, ephemeral: true })
           return;
         }
 
@@ -57,12 +57,12 @@ module.exports = class extends Command {
       }
 
       if((finalTime && (finalTime < 0 || finalTime * 1000 > player.current?.duration)) || Number(time) < 0 || Number(time) * 1000 > player.current?.duration) {
-        interaction.reply({ content: `O tempo tem que variar entre \`0 - ${player.current?.duration / 1000}\` segundos.`, ephemeral: true })
+        interaction.reply({ content: `${this.client.la[ls].music.seek.time_error}`, ephemeral: true })
         return;
       }
 
       player.seek(finalTime && (finalTime * 1000) || Number(time) * 1000);
-      interaction.reply({ content: `O tempo da música foi setado em \`${tempo}\`.`})
+      interaction.reply({ content: `${this.client.la[ls].music.seek.time_success}`})
     } 
 
     const isDJ = await this.client.vulkava.hasDJRole(interaction.member)
