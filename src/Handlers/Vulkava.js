@@ -6,14 +6,10 @@ module.exports = class NewBot extends Vulkava {
   constructor(client, nodes) {
     super({
       nodes: nodes,
+      disabledSources: ['SPOTIFY', 'DEEZER', 'APPLE_MUSIC'],
       sendWS: (guildId, payload) => {
         client.guilds.cache.get(guildId)?.shard.send(payload)
       },
-      spotify: {
-        clientId: process.env.CLIENTID,
-        clientSecret: process.env.CLIENTSECRET,
-        market: "BR"
-      }
     })
 
     this.client = client

@@ -38,8 +38,6 @@ module.exports = class extends Command {
     try {
       let res = await this.client.vulkava.search(Search);
 
-      if(res.tracks.length === 1 && res.tracks[0].title != player.current?.title) res = await this.client.vulkava.search(res.tracks[0].title)
-
       if (res.loadType === "LOAD_FAILED") {
         return interaction.reply({ content: this.client.la[ls].music.play.load_failed, ephemeral: true });
       } else if (res.loadType === "NO_MATCHES") {
