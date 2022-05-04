@@ -11,7 +11,8 @@ module.exports = class NewBot extends Vulkava {
       },
       spotify: {
         clientId: process.env.CLIENTID,
-        clientSecret: process.env.CLIENTSECRET
+        clientSecret: process.env.CLIENTSECRET,
+        market: "BR"
       }
     })
 
