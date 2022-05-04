@@ -42,7 +42,7 @@ module.exports = class extends Command {
           return;
         } else {
 
-          await interaction.reply({ content: "Cargo de DJ Removido" })
+          await interaction.reply({ content: `O cargo de DJ foi removido de meu sistema.\nUse \`/djrole\` para setar um novo.` })
 
           if(data || dbData) {
             data.djRole = ''
@@ -74,7 +74,7 @@ module.exports = class extends Command {
         return;
       }
 
-      interaction.reply({ content: `Cargo atual de DJ: ${djRole.name}`, ephemeral: true })
+      interaction.reply({ content: `O cargo de DJ atual é:\n***\`${djRole.name}\`***`, ephemeral: true })
       return;
     }
 
@@ -88,7 +88,7 @@ module.exports = class extends Command {
       await this.client.db.guilds.create({ _idG: interaction.guild.id, settings: { djRole: role.id }})
     }
 
-    interaction.reply({ content: `Cargo de DJ setada como \`${role.name}\``})
+    interaction.reply({ content: `O cargo de DJ foi setado como \`${role.name}\` com sucesso.`})
 
   }
 }
